@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+ <meta charset="utf-8">
+        <title>网页中动态的显示系统日期时间</title>
+
+        <script language="JavaScript">
+
+            function startTime()
+
+            {
+
+                var today=new Date();//定义日期对象
+
+                var yyyy = today.getFullYear();//通过日期对象的getFullYear()方法返回年
+
+                var MM = today.getMonth()+1;//通过日期对象的getMonth()方法返回年
+
+                var dd = today.getDate();//通过日期对象的getDate()方法返回年
+
+                var hh=today.getHours();//通过日期对象的getHours方法返回小时
+
+                var mm=today.getMinutes();//通过日期对象的getMinutes方法返回分钟
+
+                var ss=today.getSeconds();//通过日期对象的getSeconds方法返回秒
+
+                var vv=today.getMilliseconds()
+
+                // 如果分钟或小时的值小于10，则在其值前加0，比如如果时间是下午3点20分9秒的话，则显示15：20：09
+
+                MM=checkTime(MM);
+
+                dd=checkTime(dd);
+
+                mm=checkTime(mm);
+
+                ss=checkTime(ss);
+                document.getElementById('nowDateTime').innerHTML=MM+"-"+dd
+                document.getElementById('nowDateTimeSpan').innerHTML=hh+":"+mm+":"+ss+"."+vv;
+
+                setTimeout('startTime()',300);//每一秒中重新加载startTime()方法
+
+            }
+
+
+
+            function checkTime(i)
+
+            {
+
+                if (i<10){
+
+                    i="0" + i;
+
+                }
+
+                  return i;
+
+            }
+
+        </script>
+
+    </head>
+
+    <body onload="startTime()" style="background-color:white;color: white;">
+    <center>
+    <div style="color: black;height:50px;background-color: #efefef;font-size:100%">进校</div>
+        <br><br>
+        <div style="position:relative;left:0;right:0">
+        <img style="height:200px" src="logeture.png">
+   <div style=" height:120px ;font-size:200%">
+    <p>
+  	<font color="red"><span id="nowDateTime"></span></font> </p>
+        <font color="red"><span id="nowDateTimeSpan"></span></font>
+       <br></div>
+        <br>
+ <p style="color: black;height:200px;font-size:200%">进校：郑乔<br>宇—202036010147，<br>白名单验证通过</p></div>
+</center>
+    </body>
+
+</html>
